@@ -4,6 +4,7 @@ import yaml
 import subprocess
 import csv
 import os
+from security import safe_command
 
 # Most of the code here is written by chatgpt
 
@@ -59,5 +60,5 @@ def write_jsonl(data, file_path):
 
 
 def run_bash(bash_command):
-    process = subprocess.Popen(bash_command, shell=True)
+    process = safe_command.run(subprocess.Popen, bash_command, shell=True)
     process.wait()
