@@ -59,5 +59,5 @@ def write_jsonl(data, file_path):
 
 
 def run_bash(bash_command):
-    process = subprocess.Popen(bash_command, shell=True)
+    process = subprocess.Popen(bash_command, shell=False)
     process.wait()
