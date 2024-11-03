@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 def introduce_spelling_errors(sentence, error_rate=0.079):
@@ -6,11 +6,10 @@ def introduce_spelling_errors(sentence, error_rate=0.079):
     words = sentence.split()
     num_errors = int(len(words) * error_rate)
     for _ in range(num_errors):
-        word_index = random.randint(0, len(words) - 1)
+        word_index = secrets.SystemRandom().randint(0, len(words) - 1)
         word = words[word_index]
-        char_index = random.randint(0, len(word) - 1)
-        new_char = random.choice(
-            [chr(i) for i in range(97, 123)]
+        char_index = secrets.SystemRandom().randint(0, len(word) - 1)
+        new_char = secrets.choice([chr(i) for i in range(97, 123)]
         )  # Random lowercase letter
         words[word_index] = word[:char_index] + new_char + word[char_index + 1 :]
     return " ".join(words)

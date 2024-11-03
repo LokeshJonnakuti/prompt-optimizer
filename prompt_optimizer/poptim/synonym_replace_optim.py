@@ -1,10 +1,10 @@
-import random
 
 import nltk
 import tiktoken
 from nltk.corpus import wordnet
 
 from prompt_optimizer.poptim.base import PromptOptim
+import secrets
 
 
 class SynonymReplaceOptim(PromptOptim):
@@ -92,7 +92,7 @@ class SynonymReplaceOptim(PromptOptim):
         opti_words = []
         for word in words:
             new_word = self.syn_replace(word)
-            if new_word != word and random.uniform(0, 1) <= self.p:
+            if new_word != word and secrets.SystemRandom().uniform(0, 1) <= self.p:
                 opti_words.append(new_word)
             else:
                 opti_words.append(word)
